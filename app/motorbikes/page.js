@@ -1,11 +1,13 @@
 import BikeCard from "@/app/_components/BikeCard";
+import { getBikes } from "@/app/_lib/data-service";
 
 export const metadata = {
   title: "Motorcycles",
 };
 
 async function Page() {
-  const motorbikes = [];
+  const motorbikes = await getBikes();
+  console.log(motorbikes);
 
   return (
     <div className={"max-w-7xl mx-auto px-8 py-10"}>
@@ -34,7 +36,7 @@ async function Page() {
             "grid sm:grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 xl:gap-14"
           }
         >
-          {motorbikes.map((cabin) => (
+          {motorbikes.map((bike) => (
             <BikeCard bike={bike} key={bike.id} />
           ))}
         </div>

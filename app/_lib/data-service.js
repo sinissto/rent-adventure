@@ -18,7 +18,8 @@ export async function getCountries() {
 export const getBikes = async function () {
   const { data, error } = await supabase
     .from("motorbikes")
-    .select("id, brand, model, price, image")
+    // .select("id, brand, model, price, image")
+    .select("*")
     .order("model");
 
   if (error) {
