@@ -9,6 +9,7 @@ import {
 import { getBike, getBikes } from "@/app/_lib/data-service";
 import Image from "next/image";
 import TextExpander from "@/app/_components/TextExpander";
+import ListExpander from "@/app/_components/ListExpander";
 
 export async function generateMetadata({ params }) {
   const { bikeId } = await params;
@@ -112,7 +113,7 @@ async function Page({ params }) {
             <h4 className={"text-primary-700 font-semibold text-2xl mb-5 pb-1"}>
               Bike is equipped with:
             </h4>
-            <ul className={"flex flex-col gap-2 mb-7"}>
+            <ListExpander className={"flex flex-col gap-2 mb-7"}>
               {bikeEquipment.map((equipment, index) => (
                 <li key={index} className={"flex  gap-3 items-center"}>
                   <StarIcon className={"h-5 w-5 text-primary-600"} />
@@ -121,7 +122,7 @@ async function Page({ params }) {
                   </span>
                 </li>
               ))}
-            </ul>
+            </ListExpander>
           </div>
 
           <div
