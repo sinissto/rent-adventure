@@ -6,20 +6,28 @@ import {
   ScaleIcon,
   StarIcon,
 } from "@heroicons/react/24/solid";
-import { getBike } from "@/app/_lib/data-service";
+import { getBike, getBikes } from "@/app/_lib/data-service";
 import Image from "next/image";
+import TextExpander from "@/app/_components/TextExpander";
 
 export async function generateMetadata({ params }) {
   const { bikeId } = await params;
-  const { model } = await getBike(params.bikeId);
+  const { model } = await getBike(bikeId);
 
   return {
     title: `Bike ${model}`,
   };
 }
 
+export async function generateStaticParams() {
+  const bikes = await getBikes();
+  const ids = bikes.map((bike) => ({ bikeId: String(bike.id) }));
+  console.log(ids);
+  return ids;
+}
+
 async function Page({ params }) {
-  const bikeId = Number((await params).bikeId);
+  const { bikeId } = await params;
   const bike = await getBike(bikeId);
   const {
     id,
@@ -37,7 +45,6 @@ async function Page({ params }) {
   } = bike;
 
   const bikeEquipment = equipment.split(", ");
-  console.log(bikeEquipment);
 
   return (
     <div className={"max-w-7xl mx-auto mt-8"}>
@@ -64,7 +71,9 @@ async function Page({ params }) {
             {brand} {model}
           </h3>
 
-          <p className={"text-lg text-primary-700 mb-10"}>{description}</p>
+          <p className={"text-lg text-primary-700 mb-10"}>
+            <TextExpander>{description}</TextExpander>
+          </p>
 
           <ul className={"flex flex-col gap-2 mb-7"}>
             <li className={"flex gap-3 items-center"}>

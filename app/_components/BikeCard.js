@@ -1,8 +1,4 @@
-import {
-  BoltIcon,
-  ChevronUpDownIcon,
-  UsersIcon,
-} from "@heroicons/react/24/solid";
+import { BoltIcon, ChevronUpDownIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import Link from "next/link";
 

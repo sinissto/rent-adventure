@@ -1,4 +1,5 @@
 import { supabase } from "@/app/_lib/supabase";
+import { notFound } from "next/navigation";
 
 export async function getCountries() {
   try {
@@ -42,6 +43,7 @@ export async function getBike(id) {
 
   if (error) {
     console.error(error);
+    notFound();
   }
 
   return data;
