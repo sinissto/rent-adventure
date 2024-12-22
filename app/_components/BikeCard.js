@@ -9,8 +9,6 @@ import Link from "next/link";
 function BikeCard({ bike }) {
   const { id, brand, model, price, image, hp, seatHeight } = bike;
 
-  console.log(seatHeight);
-
   return (
     <div className="grid grid-rows-2 border-primary-800 border ">
       <div className={"relative"}>
