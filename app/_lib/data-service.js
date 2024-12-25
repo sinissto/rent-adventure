@@ -2,6 +2,9 @@ import { supabase } from "@/app/_lib/supabase";
 import { notFound } from "next/navigation";
 import { eachDayOfInterval } from "date-fns";
 
+/////////////
+// GET
+
 export async function getCountries() {
   try {
     const res = await fetch(
@@ -21,6 +24,46 @@ export async function getSettings() {
     console.error(error);
     throw new Error("Settings could not be loaded");
   }
+
+  return data;
+}
+
+export const getBikes = async function () {
+  const { data, error } = await supabase
+    .from("motorbikes")
+    // .select("id, brand, model, price, image")
+    .select("*")
+    .order("model");
+
+  if (error) {
+    console.error(error);
+    throw new Error("Motorbikes could not be loaded");
+  }
+
+  return data;
+};
+
+export async function getBike(id) {
+  const { data, error } = await supabase
+    .from("motorbikes")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    console.error(error);
+    notFound();
+  }
+
+  return data;
+}
+
+export async function getBiker(email) {
+  const { data, error } = await supabase
+    .from("riders")
+    .select("*")
+    .eq("email", email)
+    .single();
 
   return data;
 }
@@ -55,34 +98,14 @@ export async function getBookedDatesByBikeId(bikeId) {
   return bookedDates;
 }
 
-/////////////
-// GET
+// CREATE
 
-export const getBikes = async function () {
-  const { data, error } = await supabase
-    .from("motorbikes")
-    // .select("id, brand, model, price, image")
-    .select("*")
-    .order("model");
+export async function createBiker(newBiker) {
+  const { data, error } = await supabase.from("riders").insert([newBiker]);
 
   if (error) {
     console.error(error);
-    throw new Error("Motorbikes could not be loaded");
-  }
-
-  return data;
-};
-
-export async function getBike(id) {
-  const { data, error } = await supabase
-    .from("motorbikes")
-    .select("*")
-    .eq("id", id)
-    .single();
-
-  if (error) {
-    console.error(error);
-    notFound();
+    throw new Error("New Biker could not be created");
   }
 
   return data;
