@@ -2,6 +2,7 @@ import BikeList from "@/app/_components/BikeList";
 import { Suspense } from "react";
 import Spinner from "@/app/_components/Spinner";
 import Filter from "@/app/_components/Filter";
+import ReservationReminder from "@/app/_components/ReservationReminder";
 
 export const metadata = {
   title: "Motorcycles",
@@ -37,6 +38,7 @@ async function Page({ searchParams }) {
 
       <Suspense fallback={<Spinner />} key={filter}>
         <BikeList filter={filter} />
+        <ReservationReminder />
       </Suspense>
     </div>
   );

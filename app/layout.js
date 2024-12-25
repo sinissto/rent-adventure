@@ -1,6 +1,7 @@
 import { Josefin_Sans } from "next/font/google";
 import "@/app/_styles/globals.css";
 import Header from "@/app/_components/Header";
+import ReservationContextProvider from "@/app/_components/ReservationContext";
 
 // Font definition
 const josefin = Josefin_Sans({
@@ -27,8 +28,7 @@ export default function RootLayout({ children }) {
 
         <main className={"flex-1 grid"}>
           <div className={"mx-auto w-full"}>
-            {/*<div className={"max-w-7xl mx-auto"}>{children}</div>*/}
-            {children}
+            <ReservationContextProvider>{children}</ReservationContextProvider>
           </div>
         </main>
         <footer>FOOTER</footer>
