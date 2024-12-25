@@ -31,20 +31,20 @@ async function Navigation() {
                 "hover:text-accent-400 transition-colors flex items-center gap-4"
               }
             >
+              <span>My account</span>
               <img
                 src={session.user.image}
                 alt={session.user.name}
                 className={"h-8 rounded-full"}
                 referrerPolicy={"no-referrer"}
               />
-              <span>Guest Area</span>
             </Link>
           ) : (
             <Link
               href={"/account"}
               className={"hover:text-accent-400 transition-colors"}
             >
-              Guest Area
+              Login / Sign in
             </Link>
           )}
         </li>
