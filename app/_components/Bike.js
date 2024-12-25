@@ -111,7 +111,7 @@ function Bike({ bike }) {
           }
         >
           <p className={"pt-1 text-primary-900"}>
-            <span className={"font-bold text-4xl"}>{price}</span>
+            <span className={"font-bold text-4xl"}>&euro;{price}</span>
             <span className={"text-2xl"}> / day</span>
           </p>
         </div>

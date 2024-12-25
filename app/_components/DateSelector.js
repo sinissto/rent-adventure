@@ -50,7 +50,7 @@ function DateSelector({ settings, bookedDates, bike }) {
       >
         <div className={"flex items-baseline gap-6"}>
           <p className={"flex gap-2 items-baseline"}>
-            <span className={"text-2xl"}>${bikePrice}</span>
+            <span className={"text-2xl"}>&euro;{bikePrice}</span>
 
             <span>/ days</span>
           </p>
@@ -61,7 +61,9 @@ function DateSelector({ settings, bookedDates, bike }) {
               </p>
               <p>
                 <span className={"text-lg font-bold uppercase"}>Total</span>{" "}
-                <span className={"text-2xl font-semibold"}>${rentPrice}</span>
+                <span className={"text-2xl font-semibold"}>
+                  &euro;{rentPrice}
+                </span>
               </p>
             </>
           ) : null}

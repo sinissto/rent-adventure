@@ -41,7 +41,7 @@ function BikeCard({ bike }) {
           </div>
 
           <p className={"flex gap-3 justify-end items-baseline"}>
-            <span className={"text-3xl font-[350]"}>${price}</span>
+            <span className={"text-3xl font-[350]"}>&euro;{price}</span>
 
             <span className={"text-primary-700"}>/ day</span>
           </p>

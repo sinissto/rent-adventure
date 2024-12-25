@@ -1,8 +1,12 @@
 import DateSelector from "@/app/_components/DateSelector";
 import ReservationForm from "@/app/_components/ReservationForm";
 import { getBookedDatesByBikeId, getSettings } from "@/app/_lib/data-service";
+import { auth } from "@/app/_lib/auth";
+import LoginMessage from "@/app/_components/LoginMessage";
 
 async function Reservation({ bike }) {
+  const session = await auth();
+
   const [settings, bookedDates] = await Promise.all([
     getSettings(),
     getBookedDatesByBikeId(bike.id),
@@ -14,7 +18,11 @@ async function Reservation({ bike }) {
       }
     >
       <DateSelector settings={settings} bookedDates={bookedDates} bike={bike} />
-      <ReservationForm bike={bike} />
+      {session?.user ? (
+        <ReservationForm bike={bike} user={session.user} />
+      ) : (
+        <LoginMessage />
+      )}
     </div>
   );
 }
