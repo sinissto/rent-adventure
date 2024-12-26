@@ -28,7 +28,7 @@ export async function getSettings() {
   return data;
 }
 
-export const getBikes = async function () {
+export async function getBikes() {
   const { data, error } = await supabase
     .from("motorbikes")
     // .select("id, brand, model, price, image")
@@ -41,7 +41,7 @@ export const getBikes = async function () {
   }
 
   return data;
-};
+}
 
 export async function getBike(id) {
   const { data, error } = await supabase
@@ -68,7 +68,7 @@ export async function getBiker(email) {
   return data;
 }
 
-export async function getBookedDatesByBikeId(bikeId) {
+export async function getReservationDatesByBikeId(bikeId) {
   let today = new Date();
   today.setUTCHours(0, 0, 0, 0);
   today = today.toISOString();
@@ -96,6 +96,24 @@ export async function getBookedDatesByBikeId(bikeId) {
     .flat();
 
   return bookedDates;
+}
+
+export async function getReservations(riderId) {
+  const { data, error, count } = await supabase
+    .from("bookings")
+    // We actually also need data on the cabins as well. But let's ONLY take the data that we actually need, in order to reduce downloaded data.
+    .select(
+      "id, created_at, startDate, endDate, numDays, bikePrice, bikeId, riderId, motorbikes(brand, model, image)"
+    )
+    .eq("riderId", riderId)
+    .order("startDate");
+
+  if (error) {
+    console.error(error);
+    throw new Error("Bookings could not get loaded");
+  }
+
+  return data;
 }
 
 // CREATE

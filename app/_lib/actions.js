@@ -4,6 +4,7 @@ import { auth, signIn, signOut } from "@/app/_lib/auth";
 import { supabase } from "@/app/_lib/supabase";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { getReservations } from "@/app/_lib/data-service";
 
 // Regular expression for alphanumeric string between 6 and 12 characters
 const nationalIDRegex = /^[a-zA-Z0-9]{6,12}$/;
@@ -42,6 +43,31 @@ export async function updateBikerProfileAction(formData) {
 
   //todo Completely idiotic solution for the problem above, but it works...
   redirect("/account/profile");
+}
+
+export async function deleteReservation(bookingId) {
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in");
+
+  const bikerReservations = await getReservations(session.user.bikerId);
+  const bikerReservationIds = bikerReservations.map(
+    (reservation) => reservation.id
+  );
+
+  if (!bikerReservationIds.includes(bookingId))
+    throw new Error("You are not allowed to delete this reservation");
+
+  const { data, error } = await supabase
+    .from("bookings")
+    .delete()
+    .eq("id", bookingId);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Booking could not be deleted");
+  }
+
+  revalidatePath("/account/reservations");
 }
 
 export async function signInAction() {
