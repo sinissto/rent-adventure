@@ -2,6 +2,8 @@ import UpdateProfileForm from "@/app/_components/UpdateProfileForm";
 import SelectCountry from "@/app/_components/SelectCountry";
 import { auth } from "@/app/_lib/auth";
 import { getBiker } from "@/app/_lib/data-service";
+import { Suspense } from "react";
+import Spinner from "@/app/_components/Spinner";
 
 export const metadata = {
   title: "Account",

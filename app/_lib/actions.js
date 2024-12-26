@@ -38,9 +38,9 @@ export async function updateBikerProfileAction(formData) {
 
   if (error) throw new Error("Biker's profile could not be updated");
 
-  revalidatePath("/account/profile"); // doesn't work for whole path (component tree), and I cannot figure out why!!!
+  revalidatePath("/account/profile"); //todo Doesn't work for whole path (component tree), and I cannot figure out why!!!
 
-  // Completely idiotic solution for the problem above, but it's solution...
+  //todo Completely idiotic solution for the problem above, but it works...
   redirect("/account/profile");
 }
 
