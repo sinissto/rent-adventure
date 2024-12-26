@@ -1,22 +1,24 @@
 "use client";
 
 import { useState } from "react";
+import { updateBikerProfileAction } from "@/app/_lib/actions";
 
-function UpdateProfileForm({ children }) {
+function UpdateProfileForm({ children, biker }) {
   const [account, setAccount] = useState();
 
-  // todo CHANGE
-  const countryFlag = "pt.jpg";
-  const nationality = "portugal";
+  const { fullName, email, nationalId, countryFlag } = biker;
 
   return (
     <form
+      action={updateBikerProfileAction}
       className={"bg-accent-900-900 py-8 px-12 text-lg flex gap-6 flex-col"}
     >
       <div className={"space-y-2"}>
         <label>Full name</label>
         <input
-          disabled
+          disabled={true}
+          defaultValue={fullName}
+          name={"fullName"}
           className={
             "px-5 py-3 bg-accent-200 text-primary-800 w-full shadow-sm rounded-sm disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-400"
           }
@@ -26,7 +28,9 @@ function UpdateProfileForm({ children }) {
       <div className="space-y-2">
         <label>Email address</label>
         <input
-          disabled
+          disabled={true}
+          defaultValue={email}
+          name={"email"}
           className={
             "px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-400"
           }
@@ -47,9 +51,10 @@ function UpdateProfileForm({ children }) {
       </div>
 
       <div className={"space-y-2"}>
-        <label htmlFor={"nationalID"}>National ID number</label>
+        <label htmlFor={"nationalId"}>National ID number</label>
         <input
-          name={"nationalID"}
+          defaultValue={nationalId}
+          name={"nationalId"}
           className={
             "px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
           }
