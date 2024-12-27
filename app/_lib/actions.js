@@ -45,7 +45,7 @@ export async function updateBikerProfileAction(formData) {
   redirect("/account/profile");
 }
 
-export async function deleteReservation(bookingId) {
+export async function deleteReservation(reservationId) {
   const session = await auth();
   if (!session) throw new Error("You must be logged in");
 
@@ -54,13 +54,13 @@ export async function deleteReservation(bookingId) {
     (reservation) => reservation.id
   );
 
-  if (!bikerReservationIds.includes(bookingId))
+  if (!bikerReservationIds.includes(reservationId))
     throw new Error("You are not allowed to delete this reservation");
 
   const { data, error } = await supabase
     .from("bookings")
     .delete()
-    .eq("id", bookingId);
+    .eq("id", reservationId);
 
   if (error) {
     console.error(error);
@@ -68,6 +68,43 @@ export async function deleteReservation(bookingId) {
   }
 
   revalidatePath("/account/reservations");
+}
+
+export async function updateReservation(formData) {
+  const reservationId = Number(formData.get("reservationId"));
+  console.log(reservationId);
+
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in");
+
+  const bikerReservations = await getReservations(session.user.bikerId);
+  const bikerReservationIds = bikerReservations.map(
+    (reservation) => reservation.id
+  );
+
+  if (!bikerReservationIds.includes(reservationId))
+    throw new Error("You are not allowed to delete this reservation");
+
+  const updatedFields = {
+    observations: formData.get("observations").slice(0, 1000),
+  };
+
+  const { data, error } = await supabase
+    .from("bookings")
+    .update(updatedFields)
+    .eq("id", reservationId)
+    .select()
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Booking could not be updated");
+  }
+
+  revalidatePath("/account/reservations");
+  revalidatePath(`/account/reservations/edit/${reservationId}`);
+
+  redirect("/account/reservations");
 }
 
 export async function signInAction() {

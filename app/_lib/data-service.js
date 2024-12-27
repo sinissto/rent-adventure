@@ -116,6 +116,21 @@ export async function getReservations(riderId) {
   return data;
 }
 
+export async function getReservation(id) {
+  const { data, error, count } = await supabase
+    .from("bookings")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Booking could not get loaded");
+  }
+
+  return data;
+}
+
 // CREATE
 
 export async function createBiker(newBiker) {
