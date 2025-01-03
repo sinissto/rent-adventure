@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${josefin.className} antialiased text-primary-950 min-h-screen flex flex-col relative`}
+        className={`${josefin.className} antialiased text-primary-950 min-h-screen flex flex-col`}
       >
         <Header />
 

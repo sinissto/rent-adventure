@@ -6,12 +6,16 @@ import Section from "@/app/_components/Section";
 function Hero() {
   return (
     <Section>
-      <div className="min-h-[80vh] max-w-7xl mx-auto flex items-center justify-around">
+      <div
+        className={
+          "min-h-[80vh] max-w-7xl mx-auto flex items-center justify-around relative"
+        }
+      >
         <Image
-          src={"/bg_mountains.png"}
+          src={"/bg_mountains_v2.png"}
           height={500}
-          width={750}
-          className={"absolute right-0 top-0 z-[-1]"}
+          width={680}
+          className={"absolute right-[-20px] top-10 z-[-1]"}
           alt={"Mountains drawing image"}
         />
         <div className="relative z-10 max-w-xl">
