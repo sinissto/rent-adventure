@@ -20,23 +20,25 @@ async function Page({ params }) {
 
       <form
         action={updateReservation}
-        className="bg-primary-100 py-8 px-12 text-lg flex gap-6 flex-col"
+        className={"bg-primary-100 py-8 px-12 text-lg flex gap-6 flex-col"}
       >
-        <input type="hidden" name={"reservationId"} value={reservationId} />
+        <input type={"hidden"} name={"reservationId"} value={reservationId} />
 
-        <div className="space-y-2">
-          <label htmlFor="observations" className={"block mb-4"}>
+        <div className={"space-y-2"}>
+          <label htmlFor={"additionalRequest"} className={"block mb-4"}>
             Anything else we could help you with?
           </label>
           <textarea
-            defaultValue={reservation.observations}
-            name="observations"
+            defaultValue={reservation.additionalRequest}
+            name={"additionalRequest"}
             rows={5}
-            className="px-5 py-3 bg-primary-50 text-primary-800 w-full shadow-sm rounded-sm outline-none"
+            className={
+              "px-5 py-3 bg-primary-50 text-primary-800 w-full shadow-sm rounded-sm outline-none"
+            }
           />
         </div>
 
-        <div className="flex justify-end items-center gap-6">
+        <div className={"flex justify-end items-center gap-6"}>
           <SubmitButton pendingLabel={<SpinnerMini />}>
             Update reservation
           </SubmitButton>

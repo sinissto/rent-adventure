@@ -1,6 +1,11 @@
 "use client";
 
-import { isWithinInterval } from "date-fns";
+import {
+  differenceInDays,
+  isPast,
+  isSameDay,
+  isWithinInterval,
+} from "date-fns";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { useReservation } from "@/app/_components/ReservationContext";
@@ -17,14 +22,13 @@ function isAlreadyBooked(range, datesArr) {
 
 function DateSelector({ settings, bookedDates, bike }) {
   const { range, setRange, resetRange } = useReservation();
+  const displayRange = isAlreadyBooked(range, bookedDates) ? {} : range;
 
-  // CHANGE
-  const bikePrice = bike.price;
-  const numDays = 23;
-  const rentPrice = 23;
-  // const range = { from: null, to: null };
+  const { price: bikePrice } = bike;
 
-  // SETTINGS
+  const numDays = differenceInDays(displayRange.to, displayRange.from) + 1 || 1;
+  const rentPrice = bikePrice * numDays;
+
   const { minBookingLength, maxBookingLength } = settings;
 
   return (
@@ -32,15 +36,18 @@ function DateSelector({ settings, bookedDates, bike }) {
       <DayPicker
         className={"pt-2 place-self-center"}
         mode={"range"}
-        min={minBookingLength + 1}
+        min={minBookingLength}
         max={maxBookingLength}
         startMonth={new Date()}
-        disabled={{ before: new Date() }}
         endMonth={new Date(new Date().getFullYear() + 5, 12)}
+        disabled={(curDate) =>
+          isPast(curDate) ||
+          bookedDates.some((date) => isSameDay(date, curDate))
+        }
         numberOfMonths={2}
         captionLayout={"dropdown"}
         onSelect={setRange}
-        selected={range}
+        selected={displayRange}
       />
 
       <div
@@ -52,7 +59,7 @@ function DateSelector({ settings, bookedDates, bike }) {
           <p className={"flex gap-2 items-baseline"}>
             <span className={"text-2xl"}>&euro;{bikePrice}</span>
 
-            <span>/ days</span>
+            <span>/ day</span>
           </p>
           {numDays ? (
             <>

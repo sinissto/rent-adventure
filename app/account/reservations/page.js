@@ -10,6 +10,7 @@ export const metadata = {
 async function Page() {
   const session = await auth();
   const bookings = await getReservations(session.user.bikerId);
+  console.log(bookings);
 
   return (
     <div className={"max-w-7xl m-auto"}>

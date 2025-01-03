@@ -1,9 +1,33 @@
 "use client";
 
 import { useReservation } from "@/app/_components/ReservationContext";
+import { differenceInDays } from "date-fns";
+import { createReservation } from "@/app/_lib/actions";
+import SubmitButton from "@/app/_components/SubmitButton";
+import SpinnerMini from "@/app/_components/SpinnerMini";
 
 function ReservationForm({ bike, user }) {
-  const { range } = useReservation();
+  const { range, resetRange } = useReservation();
+
+  const { price: bikePrice, id } = bike;
+  const startDate = range.from;
+  const endDate = range.to || range.from;
+  const numDays = differenceInDays(endDate, startDate) + 1 || 1;
+  const rentPrice = numDays * bikePrice;
+
+  const reservationData = {
+    startDate,
+    endDate,
+    numDays,
+    bikePrice,
+    bikeId: id,
+    rentPrice,
+  };
+
+  const createReservationWithData = createReservation.bind(
+    null,
+    reservationData
+  );
 
   return (
     <div className={"scale-[1] flex flex-col bg-accent-600 "}>
@@ -27,6 +51,10 @@ function ReservationForm({ bike, user }) {
       </div>
 
       <form
+        action={async (formData) => {
+          await createReservationWithData(formData);
+          resetRange();
+        }}
         className={
           "bg-accent-600 py-10 px-16 text-lg flex flex-col grow justify-between"
         }
@@ -47,17 +75,15 @@ function ReservationForm({ bike, user }) {
         </div>
 
         <div className={"flex justify-end items-center gap-6"}>
-          <p className={"text-primary-800 text-base"}>
-            Start by selecting dates
-          </p>
-
-          <button
-            className={
-              "bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300"
-            }
-          >
-            Reserve now
-          </button>
+          {!(startDate && endDate) ? (
+            <p className={"text-primary-800 text-base"}>
+              Start by selecting dates
+            </p>
+          ) : (
+            <SubmitButton pendingLabel={<SpinnerMini />}>
+              Reserve now
+            </SubmitButton>
+          )}
         </div>
       </form>
     </div>

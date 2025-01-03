@@ -10,8 +10,8 @@ import { getReservations } from "@/app/_lib/data-service";
 const nationalIDRegex = /^[a-zA-Z0-9]{6,12}$/;
 
 // Function to check if the nationalID is valid
-function validateNationalID(nationalID) {
-  return nationalIDRegex.test(nationalID);
+function validateNationalID(nationalId) {
+  return nationalIDRegex.test(nationalId);
 }
 
 export async function updateBikerProfileAction(formData) {
@@ -72,7 +72,6 @@ export async function deleteReservation(reservationId) {
 
 export async function updateReservation(formData) {
   const reservationId = Number(formData.get("reservationId"));
-  console.log(reservationId);
 
   const session = await auth();
   if (!session) throw new Error("You must be logged in");
@@ -86,7 +85,7 @@ export async function updateReservation(formData) {
     throw new Error("You are not allowed to delete this reservation");
 
   const updatedFields = {
-    observations: formData.get("observations").slice(0, 1000),
+    additionalRequest: formData.get("additionalRequest").slice(0, 1000),
   };
 
   const { data, error } = await supabase
@@ -105,6 +104,31 @@ export async function updateReservation(formData) {
   revalidatePath(`/account/reservations/edit/${reservationId}`);
 
   redirect("/account/reservations");
+}
+
+export async function createReservation(reservationData, formData) {
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in");
+
+  const newReservationData = {
+    ...reservationData,
+    status: "unconfirmed",
+    isPaid: false,
+    riderId: session.user.bikerId,
+    additionalRequest: formData.get("additionalRequest").slice(0, 1000),
+  };
+
+  const { data, error } = await supabase
+    .from("bookings")
+    .insert([newReservationData]);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Reservation could not be created");
+  }
+
+  revalidatePath(`/motorbikes/${reservationData.bikeId}`);
+  redirect("/motorbikes/reservationCompleted");
 }
 
 export async function signInAction() {

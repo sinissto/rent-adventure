@@ -103,7 +103,7 @@ export async function getReservations(riderId) {
     .from("bookings")
     // We actually also need data on the cabins as well. But let's ONLY take the data that we actually need, in order to reduce downloaded data.
     .select(
-      "id, created_at, startDate, endDate, numDays, bikePrice, bikeId, riderId, motorbikes(brand, model, image)"
+      "id, created_at, startDate, endDate, numDays, bikePrice, bikeId, riderId, rentPrice, motorbikes(brand, model, image)"
     )
     .eq("riderId", riderId)
     .order("startDate");

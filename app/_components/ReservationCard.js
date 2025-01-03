@@ -19,6 +19,7 @@ function ReservationCard({ booking }) {
     numDays,
     bikePrice,
     status,
+    rentPrice,
     created_at,
     motorbikes: { brand, model, image },
   } = booking;
@@ -70,7 +71,7 @@ function ReservationCard({ booking }) {
 
         <div className={"flex gap-5 mt-auto items-baseline"}>
           <p className={"text-xl font-semibold text-accent-400"}>
-            ${bikePrice}
+            ${rentPrice}
           </p>
           <p className={"text-primary-300"}>&bull;</p>
           <p className={"ml-auto text-sm text-primary-400"}>
