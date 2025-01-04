@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import image1 from "@/public/about/about_1.jpg";
 import image2 from "@/public/about/about_2.jpg";
@@ -145,8 +146,10 @@ function Page() {
 
         <div className={"relative aspect-square col-span-2"}>
           <Image
-            src={"/about/about_4.jpg"}
+            // src={"/about/about_4.jpg"}
+            src={image4}
             fill={true}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className={"object-cover"}
             alt={"Group of bikers enjoying view"}
           />
@@ -167,14 +170,14 @@ function Page() {
             <p>Let’s ride together!</p>
             <p>Contact us or book online today to start your journey. </p>
             <div>
-              <a
+              <Link
                 href={"/motorbikes"}
                 className={
-                  "inline-block mt-4 bg-accent-500 px-8 py-5 text-primary-800 text-lg font-semibold hover:bg-accent-600 transition-all"
+                  "inline-block mt-4 bg-primary-500 px-8 py-5 text-primary-50 text-lg font-semibold hover:bg-primary-600 transition-all"
                 }
               >
                 Explore our rental fleet
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -14,8 +14,8 @@ function Hero() {
         <Image
           src={"/bg_mountains_v2.png"}
           height={500}
-          width={680}
-          className={"absolute right-[-20px] top-10 z-[-1]"}
+          width={650}
+          className={"absolute right-[-20px] top-10 z-[-1] h-auto"}
           alt={"Mountains drawing image"}
         />
         <div className="relative z-10 max-w-xl">
@@ -33,7 +33,7 @@ function Hero() {
           <div className={"flex items-center gap-4"}>
             <Link
               href="/motorbikes"
-              className="border border-primary-500 bg-primary-500 px-8 py-6 text-primary-50 text-lg font-semibold hover:bg-primary-600 transition-all "
+              className="border border-primary-500 bg-primary-500 px-8 py-6 text-white text-lg font-semibold hover:bg-primary-600 transition-all "
             >
               Explore adventure motorcycles
             </Link>
