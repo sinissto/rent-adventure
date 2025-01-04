@@ -16,7 +16,7 @@ function FleetBrands() {
           <h3 className={"mb-8 text-2xl"}>Motorcycle brands</h3>
           <h2
             className={
-              "text-3xl uppercase text-primary-950 mb-4 tracking-tight font-normal"
+              "text-3xl uppercase text-primary-600 mb-4 tracking-tight font-normal"
             }
           >
             Our rental fleet

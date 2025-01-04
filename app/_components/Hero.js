@@ -19,7 +19,7 @@ function Hero() {
           alt={"Mountains drawing image"}
         />
         <div className="relative z-10 max-w-xl">
-          <h1 className="text-5xl text-primary-950 mb-10 tracking-tight font-normal">
+          <h1 className="text-5xl text-primary-600 mb-10 tracking-tight font-normal">
             Welcome to adventure&apos;s paradise.
           </h1>
           <p className={"text-2xl block mb-4"}>
@@ -33,14 +33,14 @@ function Hero() {
           <div className={"flex items-center gap-4"}>
             <Link
               href="/motorbikes"
-              className="bg-accent-500 px-8 py-6 text-primary-800 text-lg font-semibold hover:bg-accent-600 transition-all "
+              className="border border-primary-500 bg-primary-500 px-8 py-6 text-primary-50 text-lg font-semibold hover:bg-primary-600 transition-all "
             >
               Explore adventure motorcycles
             </Link>
 
             <Link
               href="/about"
-              className="bg-accent-500 px-8 py-6 text-primary-800 text-lg font-semibold hover:bg-accent-600 transition-all "
+              className="border border-primary-50 bg-primary-50 px-8 py-6 text-primary-800 text-lg font-semibold hover:bg-primary-100 transition-all "
             >
               About us
             </Link>

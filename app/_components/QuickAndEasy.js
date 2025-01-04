@@ -10,7 +10,7 @@ function QuickAndEasy() {
       <div className="max-w-7xl mx-auto px-8 py-32 ">
         <div className="relative z-10 flex flex-col items-center mb-8">
           <h3 className={"mb-8 text-2xl"}>Plan tour adventure</h3>
-          <h2 className="text-3xl uppercase text-primary-950 mb-10 tracking-tight font-normal">
+          <h2 className="text-3xl uppercase text-primary-600 mb-10 tracking-tight font-normal">
             Quick and Easy rent
           </h2>
         </div>

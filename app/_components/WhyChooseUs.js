@@ -10,7 +10,7 @@ function WhyChooseUs() {
       <div className="max-w-7xl mx-auto px-8 py-32 flex items-center gap-12">
         <div className={"max-w-2xl flex flex-col items-start"}>
           <h3 className={"mb-8 text-2xl"}>Why choose us</h3>
-          <h2 className="text-3xl uppercase text-primary-950 mb-10 tracking-tight font-normal">
+          <h2 className="text-3xl uppercase text-primary-600 mb-10 tracking-tight font-normal">
             Best valued deals you will ever find
           </h2>
           <p className={"text-xl mb-8"}>
@@ -24,7 +24,9 @@ function WhyChooseUs() {
 
           <Link
             href={"/about"}
-            className={"gap-2 py-4 px-8 bg-accent-200 flex items-center "}
+            className={
+              "gap-2 py-4 px-8 bg-primary-50 flex items-center hover:bg-primary-100"
+            }
           >
             <span>Find Details</span>
             <svg
@@ -45,8 +47,8 @@ function WhyChooseUs() {
         </div>
         <div className={"max-w-xl"}>
           <div className="flex flex-col items-start gap-10">
-            <div className="flex items-center gap-6">
-              <div className={"p-4 flex-1 bg-primary-100 rounded-full"}>
+            <div className="flex items-center gap-6 bg-primary-50 p-5 shadow-2xl rounded-sm">
+              <div className={"p-4 flex-1 bg-white rounded-full"}>
                 <VignetteIcon />
               </div>
               <div>
@@ -59,8 +61,8 @@ function WhyChooseUs() {
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-6">
-              <div className={"p-4 flex-1 bg-primary-100 rounded-full"}>
+            <div className="flex items-center gap-6 bg-primary-50 p-5 shadow-2xl rounded-sm">
+              <div className={"p-4 flex-1 bg-white rounded-full"}>
                 <DollarIcon />
               </div>
               <div>
@@ -73,8 +75,8 @@ function WhyChooseUs() {
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-6">
-              <div className={"p-4 flex-1 bg-primary-100 rounded-full"}>
+            <div className="flex items-center gap-6 bg-primary-50 p-5 shadow-2xl rounded-sm">
+              <div className={"p-4 flex-1 bg-white rounded-full"}>
                 <QuestionMarkIcon />
               </div>
               <div>
