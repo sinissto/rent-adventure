@@ -7,7 +7,7 @@ function ListExpander({ children }) {
   const list = isExpanded ? children : children.slice(0, 5);
 
   return (
-    <ul>
+    <ul className={"text-lg"}>
       {list}
       <div>
         <button

@@ -14,7 +14,7 @@ function TextExpander({ children }) {
 
       <button
         className={
-          "text-primary-700 border-b border-primary-700 leading-3 pb-1 block"
+          "text-primary-700 border-b border-primary-700 leading-3 pb-1 block pt-2"
         }
         onClick={() => setIsExpanded(!isExpanded)}
       >

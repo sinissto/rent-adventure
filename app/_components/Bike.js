@@ -46,19 +46,19 @@ function Bike({ bike }) {
       <div>
         <h3
           className={
-            "text-primary-700 font-black text-5xl mb-5 translate-x-[-200px] bg-accent-200 p-6 pb-1 w-[130%]"
+            "text-white font-black text-5xl mb-5 translate-x-[-200px] bg-primary-700 p-6 pb-1 w-[130%]"
           }
         >
           {brand} {model}
         </h3>
 
-        <p className={"text-lg text-primary-700 mb-10"}>
+        <p className={"text-lg text-primary-950 mb-10"}>
           <TextExpander>{description}</TextExpander>
         </p>
 
-        <ul className={"flex flex-col gap-2 mb-7"}>
+        <ul className={"flex flex-col gap-2 mb-7 text-primary-700"}>
           <li className={"flex gap-3 items-center"}>
-            <BoltIcon className={"h-5 w-5 text-primary-600"} />
+            <BoltIcon className={"h-5 w-5 "} />
             <span className={"text-lg pt-1"}>
               <span className={"font-bold"}>{hp}</span> HP
             </span>
@@ -95,11 +95,11 @@ function Bike({ bike }) {
           </h4>
           <ListExpander className={"flex flex-col gap-2 mb-7"}>
             {bikeEquipment.map((equipment, index) => (
-              <li key={index} className={"flex  gap-3 items-center"}>
+              <li key={index} className={"flex gap-3 items-center"}>
                 <StarIcon className={"h-5 w-5 text-primary-600"} />
-                <span className={"text-lg pt-1"}>
-                  <span className={"font-bold"}>{equipment}</span>
-                </span>
+                <div className={"text-lg pt-1"}>
+                  <span className={"font-normal"}>{equipment}</span>
+                </div>
               </li>
             ))}
           </ListExpander>
@@ -107,13 +107,15 @@ function Bike({ bike }) {
 
         <div
           className={
-            "border-primary-700 border flex justify-center px-8 py-4 bg-accent-200"
+            "border-primary-700 border flex justify-center px-8 py-4 bg-primary-100"
           }
         >
-          <p className={"pt-1 text-primary-900"}>
-            <span className={"font-bold text-4xl"}>&euro;{price}</span>
+          <div className={"pt-1 text-primary-900"}>
+            <span className={"font-bold text-2xl"}>
+              &euro; <span className={"text-4xl"}>{price}</span>
+            </span>
             <span className={"text-2xl"}> / day</span>
-          </p>
+          </div>
         </div>
       </div>
     </div>

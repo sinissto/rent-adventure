@@ -52,24 +52,29 @@ function DateSelector({ settings, bookedDates, bike }) {
 
       <div
         className={
-          "flex items-center justify-between px-8 bg-accent-500 text-primary-800 h-[72px]"
+          "flex items-center justify-between px-8 bg-primary-200 text-primary-800 h-[72px]"
         }
       >
         <div className={"flex items-baseline gap-6"}>
           <p className={"flex gap-2 items-baseline"}>
-            <span className={"text-2xl"}>&euro;{bikePrice}</span>
+            <span className={"text-2xl"}>
+              <span className={"text-lg"}>&euro;</span>
+              {bikePrice}
+            </span>
 
             <span>/ day</span>
           </p>
           {numDays ? (
             <>
-              <p className={"bg-accent-600 px-3 py-2 text-2xl"}>
-                <span>&times;</span> <span>{numDays}</span>
+              <p className={"px-3 py-2 text-2xl"}>
+                <span className={"text-4xl"}>&times;</span>{" "}
+                <span>{numDays}</span>
               </p>
               <p>
                 <span className={"text-lg font-bold uppercase"}>Total</span>{" "}
                 <span className={"text-2xl font-semibold"}>
-                  &euro;{rentPrice}
+                  <span className={"text-lg"}>&euro;</span>
+                  <span className={"font-bold"}>{rentPrice}</span>
                 </span>
               </p>
             </>

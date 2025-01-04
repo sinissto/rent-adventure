@@ -26,9 +26,6 @@ async function Page({ params }) {
 
   const { brand, model } = bike;
 
-  // const settings = await getSettings();
-  // const bookedDates = await getBookedDatesByBikeId(bikeId);
-
   return (
     <div className={"max-w-7xl mx-auto mt-8"}>
       <Bike bike={bike} />
