@@ -11,7 +11,7 @@ function Footer() {
     <Section>
       <div
         className={
-          "max-w-7xl mx-auto px-8 py-24 grid grid-cols-[3fr_2fr_3fr_3fr] justify-between"
+          "max-w-7xl mx-auto px-8 py-10 grid grid-cols-[3fr_2fr_3fr_3fr] justify-between"
         }
       >
         <div
