@@ -21,10 +21,11 @@ async function Page() {
         Update your profile
       </h2>
 
-      <p className={"text-lg mb-8 text-primary-600"}>
+      <p className={"text-lg  text-primary-600"}>
         Providing the following information will make your reservation process
-        faster and smoother. See you soon!
+        faster and smoother.
       </p>
+      <p className={"text-lg mb-8 text-primary-600"}>See you soon!</p>
 
       <UpdateProfileForm biker={biker}>
         <SelectCountry

@@ -39,13 +39,13 @@ function ReservationCard({ booking }) {
 
       <div className={"flex-grow px-6 py-3 flex flex-col"}>
         <div className={"flex items-center justify-between"}>
-          <h3 className={"text-xl font-semibold"}>
+          <h3 className={"text-2xl font-semibold"}>
             {numDays} days with bike {brand} {model}
           </h3>
           {isPast(new Date(startDate)) ? (
             <span
               className={
-                "bg-yellow-800 text-yellow-200 h-7 px-3 uppercase text-xs font-bold flex items-center rounded-sm"
+                "bg-gray-500 text-accent-200 h-7 px-3 pt-1 uppercase text-xs font-bold flex items-center rounded-sm"
               }
             >
               past
@@ -53,7 +53,7 @@ function ReservationCard({ booking }) {
           ) : (
             <span
               className={
-                "bg-green-800 text-green-200 h-7 px-3 uppercase text-xs font-bold flex items-center rounded-sm"
+                "bg-green-800 text-green-200 h-7 px-3 pt-1 uppercase text-xs font-bold flex items-center rounded-sm"
               }
             >
               upcoming
@@ -61,7 +61,7 @@ function ReservationCard({ booking }) {
           )}
         </div>
 
-        <p className={"text-lg text-primary-300"}>
+        <p className={"text-lg text-primary-700"}>
           {format(new Date(startDate), "EEE, MMM dd yyyy")} (
           {isToday(new Date(startDate))
             ? "Today"
@@ -70,11 +70,11 @@ function ReservationCard({ booking }) {
         </p>
 
         <div className={"flex gap-5 mt-auto items-baseline"}>
-          <p className={"text-xl font-semibold text-accent-400"}>
-            ${rentPrice}
+          <p className={"text-xl font-semibold text-primary-950"}>
+            Rent price: <span>${rentPrice}</span>
           </p>
-          <p className={"text-primary-300"}>&bull;</p>
-          <p className={"ml-auto text-sm text-primary-400"}>
+
+          <p className={"ml-auto text-sm text-primary-600"}>
             Booked {format(new Date(created_at), "EEE, MMM dd yyyy, p")}
           </p>
         </div>
@@ -86,15 +86,15 @@ function ReservationCard({ booking }) {
             <Link
               href={`/account/reservations/edit/${id}`}
               className={
-                "group flex items-center gap-2 uppercase text-xs font-bold text-primary-300 border-b border-primary-800 flex-grow px-3 hover:bg-accent-600 transition-colors hover:text-primary-900"
+                "group flex items-center gap-2 uppercase text-xs font-bold text-primary-600 border-b border-primary-800 flex-grow px-3 hover:bg-primary-600 transition-colors hover:text-primary-50"
               }
             >
               <PencilSquareIcon
                 className={
-                  "h-5 w-5 text-primary-600 group-hover:text-primary-800 transition-colors"
+                  "h-5 w-5 text-primary-600 group-hover:text-primary-50 transition-colors"
                 }
               />
-              <span className={"mt-1"}>Edit</span>
+              <span className={"mt-2"}>Edit</span>
             </Link>
             <DeleteReservation bookingId={id} />
           </>

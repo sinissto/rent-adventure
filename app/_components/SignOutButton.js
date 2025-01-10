@@ -6,7 +6,7 @@ function SignOutButton() {
     <form action={signOutAction}>
       <button
         className={
-          "py-3 px-5 hover:bg-primary-900 hover:text-primary-100 transition-colors flex items-center gap-4 font-semibold text-primary-700 w-full"
+          "py-3 px-5 hover:bg-primary-300 hover:text-primary-800 transition-colors flex items-center gap-4 font-semibold text-primary-700 w-full"
         }
       >
         <span className={"pb-1"}>
