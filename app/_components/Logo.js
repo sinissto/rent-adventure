@@ -6,7 +6,7 @@ function Logo() {
   return (
     <Link href="/" className="flex items-center gap-4 z-10">
       <Image src={logo} height="60" width="192" alt="The Rent Adventure Logo" />
-      <span className="text-xl font-semibold  text-primary-950">
+      <span className="text-lg font-semibold  text-primary-950">
         See world differently
       </span>
     </Link>
