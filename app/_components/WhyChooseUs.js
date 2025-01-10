@@ -7,10 +7,14 @@ import QuestionMarkIcon from "@/app/_components/icons/QuestionMarkIcon";
 function WhyChooseUs() {
   return (
     <Section className={"bg-accent-50"}>
-      <div className="max-w-7xl mx-auto px-8 py-32 flex items-center gap-12">
+      <div className={"max-w-7xl mx-auto px-8 py-32 flex items-center gap-12"}>
         <div className={"max-w-2xl flex flex-col items-start"}>
           <h3 className={"mb-8 text-2xl"}>Why choose us</h3>
-          <h2 className="text-3xl uppercase text-primary-600 mb-10 tracking-tight font-normal">
+          <h2
+            className={
+              "text-3xl uppercase text-primary-600 mb-10 tracking-tight font-normal"
+            }
+          >
             Best valued deals you will ever find
           </h2>
           <p className={"text-xl mb-8"}>
@@ -46,8 +50,12 @@ function WhyChooseUs() {
           </Link>
         </div>
         <div className={"max-w-xl"}>
-          <div className="flex flex-col items-start gap-10">
-            <div className="flex items-center gap-6 bg-primary-50 p-5 shadow-2xl rounded-sm">
+          <div className={"flex flex-col items-start gap-10"}>
+            <div
+              className={
+                "flex items-center gap-6 bg-primary-50 p-5 shadow-2xl rounded-sm"
+              }
+            >
               <div className={"p-4 flex-1 bg-white rounded-full"}>
                 <VignetteIcon />
               </div>
@@ -61,7 +69,11 @@ function WhyChooseUs() {
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-6 bg-primary-50 p-5 shadow-2xl rounded-sm">
+            <div
+              className={
+                "flex items-center gap-6 bg-primary-50 p-5 shadow-2xl rounded-sm"
+              }
+            >
               <div className={"p-4 flex-1 bg-white rounded-full"}>
                 <DollarIcon />
               </div>
@@ -75,7 +87,11 @@ function WhyChooseUs() {
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-6 bg-primary-50 p-5 shadow-2xl rounded-sm">
+            <div
+              className={
+                "flex items-center gap-6 bg-primary-50 p-5 shadow-2xl rounded-sm"
+              }
+            >
               <div className={"p-4 flex-1 bg-white rounded-full"}>
                 <QuestionMarkIcon />
               </div>

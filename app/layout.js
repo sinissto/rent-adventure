@@ -2,6 +2,7 @@ import { Josefin_Sans } from "next/font/google";
 import "@/app/_styles/globals.css";
 import Header from "@/app/_components/Header";
 import ReservationContextProvider from "@/app/_components/ReservationContext";
+import Footer from "@/app/_components/Footer";
 
 // Font definition
 const josefin = Josefin_Sans({
@@ -31,7 +32,8 @@ export default function RootLayout({ children }) {
             <ReservationContextProvider>{children}</ReservationContextProvider>
           </div>
         </main>
-        <footer>FOOTER</footer>
+
+        <Footer />
       </body>
     </html>
   );
