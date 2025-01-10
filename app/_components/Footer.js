@@ -8,7 +8,7 @@ import SubmitButton from "@/app/_components/SubmitButton";
 
 function Footer() {
   return (
-    <Section>
+    <Section className={"bg-primary-100"}>
       <div
         className={
           "max-w-7xl mx-auto px-8 py-10 grid grid-cols-[3fr_2fr_3fr_3fr] justify-between"
@@ -122,7 +122,9 @@ function Footer() {
               Your email address:
             </label>
             <input
-              className={"bg-primary-100 p-2 w-full mb-3 outline-none"}
+              className={
+                "border border-primary-900 bg-primary-50 p-2 w-full mb-3 outline-none"
+              }
               type="email"
               name={"subscription"}
               id={"subscription"}
