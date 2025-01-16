@@ -8,6 +8,7 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SignOutButton from "@/app/_components/SignOutButton";
+import Uploader from "@/app/(db_data)/Uploader";
 
 const navLinks = [
   {
@@ -27,8 +28,10 @@ const navLinks = [
   },
 ];
 
-function SideNavigation() {
+function SideNavigation({ user }) {
   const pathname = usePathname();
+
+  const showUploader = user.email === "sinisha.stojanovic@gmail.com";
 
   return (
     <nav className={"border-r border-primary-900"}>
@@ -46,6 +49,12 @@ function SideNavigation() {
             </Link>
           </li>
         ))}
+
+        {showUploader && (
+          <li className={"my-16"}>
+            <Uploader />
+          </li>
+        )}
 
         <li className="mt-auto">
           <SignOutButton />

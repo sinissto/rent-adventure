@@ -17,7 +17,7 @@ async function Reservation({ bike }) {
   return (
     <div
       className={
-        "grid grid-cols-[4fr_3fr] border border-primary-800 items-stretch"
+        "grid grid-cols-[4fr_3fr] border border-primary-800 items-stretch mb-24"
       }
     >
       <DateSelector settings={settings} bookedDates={bookedDates} bike={bike} />

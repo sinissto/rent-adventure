@@ -32,10 +32,6 @@ async function Page({ searchParams }) {
         or go over mountains passes.
       </p>
 
-      <div className={"flex justify-end mb-8"}>
-        <Filter />
-      </div>
-
       <Suspense fallback={<Spinner />} key={filter}>
         <BikeList filter={filter} />
         <ReservationReminder />

@@ -128,7 +128,7 @@ export async function createReservation(reservationData, formData) {
   }
 
   revalidatePath(`/motorbikes/${reservationData.bikeId}`);
-  redirect("/motorbikes/reservationCompleted");
+  // redirect("/motorbikes/reservationCompleted");
 }
 
 export async function signInAction() {

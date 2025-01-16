@@ -5,9 +5,11 @@ import { differenceInDays } from "date-fns";
 import { createReservation } from "@/app/_lib/actions";
 import SubmitButton from "@/app/_components/SubmitButton";
 import SpinnerMini from "@/app/_components/SpinnerMini";
+import { useRouter } from "next/navigation";
 
 function ReservationForm({ bike, user }) {
   const { range, resetRange } = useReservation();
+  const router = useRouter();
 
   const { price: bikePrice, id } = bike;
   const startDate = range.from;
@@ -54,6 +56,7 @@ function ReservationForm({ bike, user }) {
         action={async (formData) => {
           await createReservationWithData(formData);
           resetRange();
+          router.push("/motorbikes/reservationCompleted");
         }}
         className={
           "bg-primary-300 py-10 px-16 text-lg flex flex-col grow justify-between"

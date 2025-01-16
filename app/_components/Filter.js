@@ -2,11 +2,17 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-function Filter() {
+function Filter({ filterValues }) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
   const activeFilter = searchParams.get("brand") ?? "all";
+
+  function onlyUnique(value, index, array) {
+    return array.indexOf(value) === index;
+  }
+
+  const filterUniqueValues = filterValues.filter(onlyUnique);
 
   function handleFilter(filterValue) {
     const params = new URLSearchParams(searchParams);
@@ -24,20 +30,17 @@ function Filter() {
       >
         All Bikes
       </Button>
-      <Button
-        filter={"bmw"}
-        handleFilter={handleFilter}
-        activeFilter={activeFilter}
-      >
-        BMW
-      </Button>
-      <Button
-        filter={"honda"}
-        handleFilter={handleFilter}
-        activeFilter={activeFilter}
-      >
-        Honda
-      </Button>
+
+      {filterUniqueValues.map((filterValue, index) => (
+        <Button
+          key={index}
+          filter={filterValue}
+          handleFilter={handleFilter}
+          activeFilter={activeFilter}
+        >
+          {filterValue.toUpperCase()}
+        </Button>
+      ))}
     </div>
   );
 }
