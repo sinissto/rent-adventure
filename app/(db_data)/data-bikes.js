@@ -58,7 +58,7 @@ export const bikes = [
     capacity: 650,
     weight: 216,
     seatHeight: "835",
-    image: imageUrl + "honda_africa-twin.jpg",
+    image: imageUrl + "suzuki_v-strom-650xt.png",
     year: 2024,
     equipment:
       "Immobilizer system, ABS, Low RPM Assist, Suzuki Easy Start System, Traction control 2 positions/OFF",
