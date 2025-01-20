@@ -73,7 +73,7 @@ Follow the steps below to set up and run the application locally:
 ├── middleware.js        # Auth middleware configuration
 ├── next.config.mjs      # Next.js configuration
 ├── package.json         # Project dependencies and scripts
-├── postcss.config.mjs   # Project dependencies and scripts
+├── postcss.config.mjs   # Part of Tailwind configuration
 ├── README.md            # Project documentation
 └── tailwind.config.js   # Tailwind configuration
 ```
